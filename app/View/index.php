@@ -17,14 +17,14 @@
             foreach ($results as $result):
                 ?>
                 <div style="margin-bottom:15px">
-                    <a href="<?php echo $result['formattedUrl'] ?>" target="_blank">
+                    <a href="<?php echo $result['link'] ?>" target="_blank">
                         <?php echo $result['htmlTitle'] ?>
                     </a>
                     <p>
                         <?php echo $result['htmlSnippet'] ?>
                     </p>
                     <span>
-                        <strong>Content lenght:</strong> <?php echo str_word_count($result['snippet'], 0) ?>
+                        <strong>Content lenght:</strong> <?php echo str_word_count($result['snippet'], 0) ?> words
                     </span>
                 </div>
                 <?php
