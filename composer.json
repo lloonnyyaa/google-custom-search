@@ -1,6 +1,7 @@
 {
     "require": {
-        "google/apiclient": "^2.4"
+        "google/apiclient": "^2.4",
+        "html2text/html2text": "^4.2"
     },    
     "autoload": {
         "psr-4": {

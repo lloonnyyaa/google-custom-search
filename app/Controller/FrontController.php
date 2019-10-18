@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Component\GoogleSearch;
+use App\Util\TextCountUtil;
 
 class FrontController
 {
@@ -21,10 +22,13 @@ class FrontController
             }
 
             $results = $engine->search($searchTerm, $start ?? 0);
+
+            $u = new TextCountUtil($results['items']);
+            $final = $u->addCount($results['items']);
         }
         
         echo $this->render('index', [
-            'results' => $results['items'] ?? null,
+            'results' => $final ?? null,
             'pages' => $results['count'] ? $results['count'] / 10 : null
         ]);
     }

@@ -24,7 +24,7 @@
                         <?php echo $result['htmlSnippet'] ?>
                     </p>
                     <span>
-                        <strong>Content lenght:</strong> <?php echo str_word_count($result['snippet'], 0) ?> words
+                        <strong>Content lenght:</strong> <?php echo $result['words_count'] ?> words
                     </span>
                 </div>
                 <?php

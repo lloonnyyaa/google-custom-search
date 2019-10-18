@@ -32,7 +32,7 @@ class GoogleSearch
 
         $results = $this->service->cse->listCse($searchTerm, $this->params);
         $info = $results->getSearchInformation();
-        
+
         return [
             'items' => $results->getItems(),
             'count' => $info["totalResults"]
