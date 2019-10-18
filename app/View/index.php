@@ -7,8 +7,8 @@
 
         <h1>Google custom search</h1>
 
-        <form method="post" style="margin-bottom:10px">
-            <input type="text" name="q" value="<?php echo $_POST['q'] ?>">
+        <form style="margin-bottom:10px">
+            <input type="text" name="q" value="<?php echo $_REQUEST['q'] ?>">
             <button type="submit">Search</button>
         </form>
 
@@ -32,5 +32,14 @@
         endif;
         ?>
 
+        <?php if (!empty($pages)): ?>
+            <div>
+                <?php for ($p = 1; $p <= 9; $p++): ?>
+                    <a href="<?php echo '//' . $_SERVER[HTTP_HOST] . '?q=' . $_REQUEST['q'] . '&p=' . $p ?>">
+                        <?php echo $p ?>
+                    </a>
+                <?php endfor; ?>
+            </div>
+        <?php endif ?>
     </body>
 </html>

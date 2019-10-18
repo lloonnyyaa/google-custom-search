@@ -24,11 +24,19 @@ class GoogleSearch
         ];
     }
 
-    public function search(string $searchTerm): array
+    public function search(string $searchTerm, int $start = 0): array
     {
-        $results = $this->service->cse->listCse($searchTerm, $this->params);
+        if ($start !== 0) {
+            $this->params['start'] = $start;
+        }
 
-        return $results->getItems();
+        $results = $this->service->cse->listCse($searchTerm, $this->params);
+        $info = $results->getSearchInformation();
+        
+        return [
+            'items' => $results->getItems(),
+            'count' => $info["totalResults"]
+        ];
     }
 
 }

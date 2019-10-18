@@ -9,16 +9,23 @@ class FrontController
 
     public function index()
     {
-        $searchTerm = filter_input(INPUT_POST, 'q');
+        $searchTerm = filter_input(INPUT_GET, 'q');
         $submited = !is_null($searchTerm);
 
         if ($submited) {
             $engine = new GoogleSearch();
-            $results = $engine->search($searchTerm);
-        }
 
+            $page = filter_input(INPUT_GET, 'p');
+            if (!is_null($page)) {
+                $start = $page * 10 + 1;
+            }
+
+            $results = $engine->search($searchTerm, $start ?? 0);
+        }
+        
         echo $this->render('index', [
-            'results' => $results ?? null
+            'results' => $results['items'] ?? null,
+            'pages' => $results['count'] ? $results['count'] / 10 : null
         ]);
     }
 
