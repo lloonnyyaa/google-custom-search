@@ -5,8 +5,8 @@ namespace App\Component;
 class GoogleSearch
 {
 
-    const API_KEY = "AIzaSyAknDLDERHIqn7z2B0S8fU2eMIYjdJywNw";
-    const ENGINE_ID = "006382242660553458173:lljrviqtw08";
+    const API_KEY = "";
+    const ENGINE_ID = "";
 
     private $service;
     private $params;
